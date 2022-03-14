@@ -1,0 +1,80 @@
+.main{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid rgb(36, 36, 36);
+}
+
+.sectionLable{
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    flex: 1;
+}
+
+.option{
+    display: flex;
+    width: auto;
+}
+
+.btnConnect{
+    color: white;
+    padding: 0.3rem;
+    border-radius: 100px;
+    font-size: 1rem;
+    font-weight: 300;
+    background-color: transparent;
+    border: 2px solid rgb(36, 36, 36);
+    border-width: 2px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btnConnect:active{
+    background-color: rgb(36, 36, 36);
+  }
+
+.lablePrimary{
+    color: rgb(6, 194, 6);
+}
+
+.lableSecondary{
+    color: white;
+}
+
+.btnPrimary{
+    margin: 0px 20px;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: rgb(0, 60, 255);
+    border: none;
+    cursor: pointer;
+  }
+  .btnPrimary:active{
+    background-color: rgb(45, 93, 252);
+  }
+  
+  .btnSecondary{
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: transparent;
+    border: 2px solid rgb(36, 36, 36);
+    border-width: 2px;
+    cursor: pointer;
+  }
+  .btnSecondary:active{
+    background-color: rgb(36, 36, 36);
+  }
