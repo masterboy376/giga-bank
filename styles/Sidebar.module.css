@@ -4,6 +4,7 @@
     overflow-y: scroll;
     background-color: transparent;
     border-right: 2px solid rgb(36, 36, 36);
+    background-color: rgb(17, 17, 17);
 }
 .main::-webkit-scrollbar {
     display: none;
@@ -39,11 +40,15 @@
     cursor: pointer;
     display: flex;
     padding: 0.5rem;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     background-color: transparent;
     border: none;
     margin: 1rem 0rem;
+    border-radius: 10px;
+}
+.item:hover{
+    background-color: rgb(36, 36, 36);
 }
 
 .itemText{

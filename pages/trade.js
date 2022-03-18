@@ -1,31 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Head from 'next/head'
-import styles from '../styles/Dashboard.module.css'
+import Image from 'next/image'
+import styles from '../styles/Trade.module.css'
 import { useWeb3 } from '@3rdweb/hooks'
 import Header from '../components/header'
 import Sidebar from '../components/sidebar'
-import BalanceChart from '../components/balanceChart'
-import { ethers } from 'ethers'
-import { ThirdwebSDK } from '@3rdweb/sdk'
+import { coins } from '../static-scripts/coins'
 
-
-export default function Home({ allTokens }) {
-  // const sdk = new ThirdwebSDK(
-  //   process.env.NEXT_PUBLIC_METAMASK_KEY,
-  //   new ethers.Wallet(
-  //     ethers.getDefaultProvider(
-  //       'https://rinkeby.infura.io/v3/'
-  //     )
-  //   )
-  // )
+export default function Trade() {
   const { address, connectWallet } = useWeb3()
-
-  const [tokens, setTokens] = useState([])
-
-  useEffect(() => {
-    setTokens(allTokens.result)
-  }, [allTokens])
-
 
   return (
     <div className={styles.container}>
@@ -40,19 +23,44 @@ export default function Home({ allTokens }) {
         <>
           <div className={styles.wrapper}>
             <div className={styles.sidebar}>
-              <Sidebar item='dashboard' />
+              <Sidebar item='trade' />
             </div>
             <div className={styles.main}>
-              <Header title='Dashboard' address={address} />
+              <Header title='Trade' address={address} />
               <div className={styles.content}>
                 <div className={styles.mainContent}>
-                  <div className={styles.chart}>
-                    <p className={styles.subtitle}>Current balance</p>
-                    <p className={styles.balance}>$ 182449.00</p>
-                  </div>
-                  <div className={styles.chart}>
-                    <p className={styles.subtitle}>Balance history</p>
-                    <BalanceChart />
+                  <div className={styles.tableBorder}>
+                    <table className={styles.table}>
+                      <tr>
+                        <th>Name</th>
+                        <th>Balance</th>
+                        <th>Price</th>
+                        <th>Allocation</th>
+                      </tr>
+                      {coins.map((coin) => {
+                        return <tr key={coin.priceUsd}>
+                          <td>
+                            <div className={styles.tableNameMain}>
+                              <Image src={coin.logo} width={32} height={32}></Image>
+                              <div className={styles.tableName}>
+                                <p className={styles.textMain}>{coin.name}</p>
+                                <p className={styles.textSec}>{coin.sign}</p>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <p className={styles.textMain}>${coin.balanceUsd}</p>
+                            <p className={styles.textSec}>{coin.balanceCoin} {coin.sign}</p>
+                          </td>
+                          <td>
+                            <p className={styles.textMain}>${coin.priceUsd}</p>
+                            <p className={coin.change.slice(0, 1) == '+' ? styles.textSecGreen : styles.textSecRed}>{coin.change}%</p>
+                          </td>
+                          <td>{coin.allocation}%</td>
+                          <td>⋮</td>
+                        </tr>
+                      })}
+                    </table>
                   </div>
                 </div>
                 <div className={styles.offer}>
@@ -86,16 +94,4 @@ export default function Home({ allTokens }) {
 
     </div>
   )
-}
-
-export async function getServerSideProps(context) {
-  let data = await fetch(`https://57wz3yh8.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%3D%3D'coins'%5D%20%7B%0A%20%20name%2C%0A%20%20usdPrice%2C%0A%20%20contractAddress%2C%0A%20%20symbol%2C%0A%20%20logo%0A%7D`)
-  let allTokens;
-  if (data) {
-    allTokens = await data.json()
-  }
-  // console.log(allTokens)
-  return {
-    props: { allTokens },
-  }
 }

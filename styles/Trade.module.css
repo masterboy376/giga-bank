@@ -5,8 +5,8 @@
 }
 .main{
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     width: 80%;
 }
 .sidebar{
@@ -93,7 +93,7 @@
   .actionSec{
     text-align: right;
     font-weight: bold;
-    color: rgb(146, 146, 146);
+    color: rgb(88, 88, 88);
     margin-left: 1rem;
   }
   .actionTri{
@@ -103,22 +103,46 @@
     color: rgb(0, 60, 255);
   }
 
-  .chart{
-    width: 100%;
+  .tableBorder{
     border: 2px solid rgb(36, 36, 36);
     border-radius: 10px;
-    padding: 1rem;
-    margin-bottom: 1rem;
   }
-  .balance{
-    color:white;
-    font-size: xx-large;
-    font-weight: bold;
-    margin-bottom: 1rem;
+  .table{
+    background-color: transparent;
+    width: 100%;
+    color: white;
+    border-collapse: collapse;
   }
-  .subtitle{
-    color:rgb(146, 146, 146);
-    font-size: large;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+  
+  .table > tr{
+    border-bottom: 2px solid rgb(36, 36, 36);
+  }
+  
+  .table > tr > th{
+    padding: 1rem 0.5rem;
+    text-align: left;
+  }
+  .table > tr > td{
+    padding: 1rem 0.5rem;
+    text-align: left;
+  }
+
+  .tableNameMain{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+  .tableName{
+    flex:1;
+    padding-left: 1rem;
+  }
+  .textSec{
+    color: rgb(88, 88, 88);
+  }
+  .textSecGreen{
+    color: rgb(6, 194, 6);
+  }
+  .textSecRed{
+    color: rgb(255, 53, 53);
   }
