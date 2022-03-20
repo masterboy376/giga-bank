@@ -11,13 +11,14 @@ import { ThirdwebSDK } from '@3rdweb/sdk'
 
 export default function Home({ allTokens }) {
   // const sdk = new ThirdwebSDK(
-  //   process.env.NEXT_PUBLIC_METAMASK_KEY,
   //   new ethers.Wallet(
+  //     process.env.NEXT_PUBLIC_METAMASK_KEY,
   //     ethers.getDefaultProvider(
-  //       'https://rinkeby.infura.io/v3/'
+  //       // 'https://rinkeby.infura.io/v3/'
+  //       'https://rinkeby.infura.io/v3/692c3cb3b189440ca343d5ec2fc6cac2'
   //     )
   //   )
-  // )
+  //   )
   const { address, connectWallet } = useWeb3()
 
   const [tokens, setTokens] = useState([])
